@@ -68,7 +68,7 @@ cb_palette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00"
 
 ```{r}
 #| label: load-eda
-merged_long_sf <- readRDS("merged_long_sf.rds")
+merged_long_sf <- readRDS("data/merged_long_sf.rds")
 mapview(merged_long_sf, zcol="name", cex=4, label="geounit")
 ```
 
@@ -82,19 +82,20 @@ A plot of this measure by country looks as follows:
 
 ```{r}
 #| label: plot-area
-merged_area_sf <- readRDS("merged_area_sf.rds")
+merged_area_sf <- readRDS("data/merged_area_sf.rds")
 mapview(merged_area_sf, zcol="scaled_dist")
 ```
 
 ## Hypothesis Testing (Regression)
 
 ```{r}
-#| label: plot-regression
-merged_sub_sf <- readRDS("merged_sub_sf.rds")
+#| label: load-regression-data
+merged_sub_sf <- readRDS("data/merged_sub_sf.rds")
 merged_sub_sf |> head()
 ```
 
 ```{r}
+#| label: plot-regression
 merged_sub_sf |> ggplot(aes(x=scaled_dist, y=total_score, label=NAME_ENGLI)) +
   geom_point() +
   geom_smooth(method='lm', formula= y~x) +
@@ -106,4 +107,4 @@ merged_sub_sf |> ggplot(aes(x=scaled_dist, y=total_score, label=NAME_ENGLI)) +
 
 ## Conclusion
 
-Our evidence indicates that the spatial dynamics of **conflict** differ from the spatial dynamics of **misgovernance**. Whereas 
+Our evidence indicates that the spatial dynamics of **conflict** differ from the spatial dynamics of **misgovernance**.

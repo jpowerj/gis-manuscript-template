@@ -1,2 +1,4 @@
 *.rds
 /.quarto/
+
+**/*.quarto_ipynb
