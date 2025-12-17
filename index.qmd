@@ -1,6 +1,6 @@
 ---
 title: "Coup-Proofing via Capital Relocation"
-subtitle: "DSAN 6750 / PPOL 6805: GIS for Spatial Data Science"
+subtitle: "PPOL 6805 / DSAN 6750: GIS for Spatial Data Science"
 authors:
   - name: Jeff Jacobs
     email: jj1088@georgetown.edu
@@ -13,6 +13,8 @@ title-block-banner-color: "black"
 format:
   html:
     df-print: kable
+    include-in-header:
+      text: "<script type='module' src='https://js.arcgis.com/4.34/embeddable-components/'></script>"
   pdf:
     # https://quarto.org/docs/reference/formats/pdf.html
     link-citations: true
@@ -83,8 +85,15 @@ A plot of this measure by country looks as follows:
 ```{r}
 #| label: plot-area
 merged_area_sf <- readRDS("data/merged_area_sf.rds")
+# Uncomment to export to geojson
+# merged_area_sf |> st_write("data/merged_area_sf.geojson")
 mapview(merged_area_sf, zcol="scaled_dist")
 ```
+
+If the data was too big for `mapview`, the following is the same map hosted on ArcGIS and embedded here:
+
+<!-- Add custom element to <body> of your page -->
+<arcgis-embedded-map style="height:600px;width:100%;" item-id="138b4cf3f5e54863bd76d97b515124b1" theme="light" heading-enabled legend-enabled share-enabled center="12.539048194882033,32.107397539485724"scale="147914381.8978885" portal-url="https://georgetownuniv.maps.arcgis.com"></arcgis-embedded-map>
 
 ## Hypothesis Testing (Regression)
 
